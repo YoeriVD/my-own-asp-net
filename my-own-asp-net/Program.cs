@@ -1,6 +1,7 @@
 ﻿using my_own_asp_net.Controllers;
 using my_own_asp_net.Handlers;
 using my_own_asp_net.Infrastructure.Application;
+using my_own_asp_net.Infrastructure.Extensions;
 
 Console.WriteLine("Hello, World!");
 

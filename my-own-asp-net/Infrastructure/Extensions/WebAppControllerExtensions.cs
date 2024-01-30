@@ -1,4 +1,6 @@
-namespace my_own_asp_net.Infrastructure.Application;
+using my_own_asp_net.Infrastructure.Application;
+
+namespace my_own_asp_net.Infrastructure.Extensions;
 
 public static class WebAppControllerExtensions
 {
