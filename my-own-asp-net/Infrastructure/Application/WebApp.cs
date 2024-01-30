@@ -37,8 +37,6 @@ public class WebApp
             var responseBytes = Encoding.UTF8.GetBytes(response);
             stream.Write(responseBytes, 0, responseBytes.Length);
         }
-
-        Console.WriteLine("WebApp started");
     }
 
     public string ProcessRequest(string url)
