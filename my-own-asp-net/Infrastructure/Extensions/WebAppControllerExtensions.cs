@@ -1,3 +1,4 @@
+using System.Reflection;
 using my_own_asp_net.Infrastructure.Application;
 
 namespace my_own_asp_net.Infrastructure.Extensions;
@@ -13,13 +14,18 @@ public static class WebAppControllerExtensions
         {
             var attribute = methodInfo.GetCustomAttributes(typeof(RouteAttribute), false).First() as RouteAttribute;
             var route = attribute!.Route; // already checked for null
-            app.Map(route, () =>
-            {
-                var controller = Activator.CreateInstance(controllerType);
-                var result = methodInfo.Invoke(controller, null) as string;
-                return result!;
-            });
+            app.Map(route, new ControllerHandler(controllerType, methodInfo));
         }
+    }
+}
+
+public class ControllerHandler(Type controllerType, MethodBase methodInfo) : IRequestHandler
+{
+    public string Handle()
+    {
+        var controller = Activator.CreateInstance(controllerType);
+        var result = methodInfo.Invoke(controller, null) as string;
+        return result!;
     }
 }
 
