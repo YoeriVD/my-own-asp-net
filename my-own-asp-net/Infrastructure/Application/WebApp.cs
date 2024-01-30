@@ -6,7 +6,7 @@ namespace my_own_asp_net.Infrastructure.Application;
 
 public class WebApp
 {
-    private readonly IDictionary<string, IRequestHandler> _handlers = new Dictionary<string, IRequestHandler>();
+    private readonly Dictionary<string, IRequestHandler> _handlers = new();
 
     /// <summary>
     ///     A bit of magic to start listening to port 80
