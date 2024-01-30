@@ -19,20 +19,3 @@ app.Map<GetCartHandler>("/cart");
 app.AddController<TodoController>();
 
 app.Start();
-
-var isRunning = true;
-while (isRunning)
-{
-    Console.Write("Enter URL:");
-    var getUrl = Console.ReadLine();
-    if (string.IsNullOrWhiteSpace(getUrl)) continue;
-    if (getUrl == "q")
-    {
-        isRunning = false;
-        continue;
-    }
-
-
-    var response = app.ProcessRequest(getUrl);
-    Console.WriteLine(response);
-}
