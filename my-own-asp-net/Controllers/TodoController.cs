@@ -1,8 +1,8 @@
-using my_own_asp_net.Infrastructure;
 using my_own_asp_net.Infrastructure.Application;
 
 namespace my_own_asp_net.Controllers;
 
+// ReSharper disable once ClassNeverInstantiated.Global (used by reflection)
 public class TodoController
 {
     [Route("/todo")]
