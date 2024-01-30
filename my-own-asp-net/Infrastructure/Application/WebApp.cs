@@ -33,13 +33,14 @@ public class WebApp
             var response = ProcessRequest(url);
             Console.WriteLine("Response sent:");
             Console.WriteLine(response);
-            
+
             var responseBytes = Encoding.UTF8.GetBytes(response);
             stream.Write(responseBytes, 0, responseBytes.Length);
         }
+        // ReSharper disable once FunctionNeverReturns this function should only stop when the program exits
     }
 
-    public string ProcessRequest(string url)
+    private string ProcessRequest(string url)
     {
         Console.WriteLine($"Processing request for {url}");
         _handlers.TryGetValue(url, out var handler);
@@ -48,18 +49,9 @@ public class WebApp
         return string.Empty;
     }
 
-    public void Map<T>(string url) where T : IRequestHandler, new()
-    {
-        _handlers.Add(url, new T());
-    }
 
     public void Map(string url, IRequestHandler handler)
     {
         _handlers.Add(url, handler);
-    }
-
-    public void Map(string url, Func<string> handler)
-    {
-        _handlers.Add(url, new LambdaHandler(handler));
     }
 }

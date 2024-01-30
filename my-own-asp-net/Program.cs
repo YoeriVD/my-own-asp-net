@@ -1,6 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
-
-using my_own_asp_net.Controllers;
+﻿using my_own_asp_net.Controllers;
 using my_own_asp_net.Handlers;
 using my_own_asp_net.Infrastructure.Application;
 
