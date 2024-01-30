@@ -13,12 +13,12 @@ public static class WebAppControllerExtensions
         {
             var attribute = methodInfo.GetCustomAttributes(typeof(RouteAttribute), false).First() as RouteAttribute;
             var route = attribute!.Route; // already checked for null
-            app.Map(route, new LambdaHandler(() =>
+            app.Map(route, () =>
             {
                 var controller = Activator.CreateInstance(controllerType);
                 var result = methodInfo.Invoke(controller, null) as string;
                 return result!;
-            }));
+            });
         }
     }
 }

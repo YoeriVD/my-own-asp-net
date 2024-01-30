@@ -9,3 +9,8 @@ public static class WebAppLambdaExtensions
         app.Map(url, new LambdaHandler(handler));
     }
 }
+
+public class LambdaHandler(Func<string> handler) : IRequestHandler
+{
+    public string Handle() => handler();
+}
